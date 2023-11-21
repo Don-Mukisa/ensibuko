@@ -1,0 +1,29 @@
+<!-- requisition_app/templates/requisition_app/requisition_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Requisition List</h2>
+  {% if requisitions %}
+    <ul>
+      {% for requisition in requisitions %}
+        <li>
+          <strong>{{ requisition.title }}</strong> - {{ requisition.description }}
+          <br>
+          {% if requisition.upload_file %}
+            <a href="{{ requisition.upload_file.url }}" target="_blank">Download File</a>
+            <br>
+          {% endif %}
+          Amount: {{ requisition.amount }}
+          {% if requisition.amount_60_percent %}
+            | 60% Amount: {{ requisition.amount_60_percent }}
+          {% endif %}
+          {% if requisition.approved %}
+            | Approved
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No requisitions available.</p>
+  {% endif %}
+{% endblock %}
