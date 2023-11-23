@@ -1,6 +1,17 @@
 /* static/css/styles.css */
+.delete{
+    background-color: #e80d0d;
+}
+body {
+    background-color: rgb(247, 211, 211);
+  }
+.logo{
+    width: 80px; /* Set the desired width */
+    height: auto; /* Maintain the aspect ratio */
+  }
+
 header {
-    background-color: #4CAF50; /* Green background color */
+    background-color: #396fc7; /* Green background color */
     padding: 10px; /* Add padding for better visibility */
 }
 
@@ -21,7 +32,7 @@ nav a {
 }
 
 nav a:hover {
-    background-color: #45a049; /* Darker green background color on hover */
+    background-color: #e80d0d; /* Darker green background color on hover */
 }
 
 /* static/css/styles.css */
@@ -67,7 +78,47 @@ th.amount-60, td.amount-60 {
 th.approved, td.approved {
     width: 15%;
 }
-
+tr{
+    background-color: #5fa1c5;
+    background-repeat: repeat-y;
+}
 tr:hover {
     background-color: #f5f5f5; /* Light gray background color on hover */
+}
+
+/* static/css/styles.css */
+form {
+  max-width: 200px; /* Set a maximum width for the form */
+  margin: 5%; /* Center the form horizontally */
+  color: #eef3f8;
+  background-color: #4CAF50;
+  padding: 5px;
+  border-radius: 5px;
+  
+  
+}
+
+form-group {
+  margin-bottom: 15px; /* Add space between form groups */
+}
+
+label {
+  font-size: 20px;
+  display: block; /* Display labels as block elements */
+  margin-top: 5px; /* Add space between label and input */
+}
+
+.form {
+    max-width: 500px; /* Set a maximum width for the form */
+    margin: 5%; /* Center the form horizontally */
+    color: rgb(228, 33, 12);
+    background-color: #57db5b;
+    padding: 5px;
+    border-radius: 5px;
+  
+  }
+.form:hover{
+    border-color: rgb(184, 11, 11);
+    border-width: 700px;
+    background-color: #2e4e30;;
 }

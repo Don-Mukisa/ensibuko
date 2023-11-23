@@ -5,7 +5,13 @@
   <h2>Signup</h2>
   <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+    
+    {% for field in form %}
+    <div>
+      <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+      {{ field }}
+    </div>
+  {% endfor %}
     <button type="submit">Signup</button>
   </form>
   <p>Already have an account? <a href="{% url 'login' %}">Login here</a>.</p>

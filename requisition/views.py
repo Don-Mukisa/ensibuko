@@ -6,6 +6,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
+from django.shortcuts import get_object_or_404, redirect
+from django.http import HttpResponseForbidden
 
 
 def signup(request):
@@ -40,7 +42,7 @@ def login_view(request):
 
     return render(request, 'login.html', {'form': form})
 
-@login_required
+@login_required(login_url='/login/')
 def create_requisition(request):
     if request.method == 'POST':
         form = RequisitionForm(request.POST or None, request.FILES)
@@ -54,11 +56,23 @@ def create_requisition(request):
 
     return render(request, 'create_requisition.html', {'form': form})
 
-@login_required
+@login_required(login_url='/login/')
 def requisition_list(request):
     if request.user.userprofile.user_type == 'normal':
         requisitions = Requisition.objects.filter(user=request.user)
     else:
         requisitions = Requisition.objects.all()
-    print('REQUEST = ',request.user)
     return render(request, 'requisition_list.html', {'requisitions': requisitions,'User':request.user,'Role':request.user.userprofile.user_type})
+
+@login_required(login_url='/login/')
+def delete_requisition(request, requisition_id):
+    requisition = get_object_or_404(Requisition, id=requisition_id)
+    
+    # Check if the user has permission to delete this requisition
+    if request.user.userprofile.user_type == 'normal' and requisition.user != request.user:
+        return HttpResponseForbidden("You do not have permission to delete this requisition.")
+
+    # Delete the requisition
+    requisition.delete()
+
+    return redirect('requisition_list')
