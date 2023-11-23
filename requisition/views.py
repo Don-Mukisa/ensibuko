@@ -43,7 +43,7 @@ def login_view(request):
 @login_required
 def create_requisition(request):
     if request.method == 'POST':
-        form = RequisitionForm(request.POST or None, request.FILES, user=request.user)
+        form = RequisitionForm(request.POST or None, request.FILES)
         if form.is_valid():
             requisition = form.save(commit=False)
             requisition.user = request.user

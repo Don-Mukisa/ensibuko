@@ -9,7 +9,6 @@ class Requisition(models.Model):
     description = models.TextField()
     upload_file = models.FileField(upload_to='uploads/')
     amount = models.DecimalField(default=0,max_digits=10, decimal_places=2)
-    #amount_60_percent = models.DecimalField(default=0,max_digits=10, decimal_places=2)
     approved = models.BooleanField(default=False)
     amount_60_percent = models.DecimalField(max_digits=10, decimal_places=2, editable=False, null=True, blank=True)
 
