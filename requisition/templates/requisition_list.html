@@ -2,27 +2,48 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<h3>USER:{{user}}</h3>
+<h3>ROLE: {{Role}}</h3>
   <h2>Requisition List</h2>
   {% if requisitions %}
-    <ul>
-      {% for requisition in requisitions %}
-        <li>
-          <strong>{{ requisition.title }}</strong> - {{ requisition.description }}
-          <br>
-          {% if requisition.upload_file %}
-            <a href="{{ requisition.upload_file.url }}" target="_blank">Download File</a>
-            <br>
-          {% endif %}
-          Amount: {{ requisition.amount }}
-          {% if requisition.amount_60_percent %}
-            | 60% Amount: {{ requisition.amount_60_percent }}
-          {% endif %}
-          {% if requisition.approved %}
-            | Approved
-          {% endif %}
-        </li>
-      {% endfor %}
-    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>File</th>
+          <th>Amount</th>
+          <th>60% Amount</th>
+          <th>Approved</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for requisition in requisitions %}
+          <tr>
+            <td><strong>{{ requisition.title }}</strong></td>
+            <td>{{ requisition.description }}</td>
+            <td>
+              {% if requisition.upload_file %}
+                <a href="{{ requisition.upload_file.url }}" target="_blank">Download File</a>
+              {% endif %}
+            </td>
+            <td>{{ requisition.amount }}</td>
+            <td>
+              {% if requisition.amount_60_percent %}
+                {{ requisition.amount_60_percent }}
+              {% endif %}
+            </td>
+            <td>
+              {% if requisition.approved %}
+                Approved
+                {% else %}
+                Not Approved
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   {% else %}
     <p>No requisitions available.</p>
   {% endif %}

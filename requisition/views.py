@@ -60,5 +60,5 @@ def requisition_list(request):
         requisitions = Requisition.objects.filter(user=request.user)
     else:
         requisitions = Requisition.objects.all()
-
-    return render(request, 'requisition_list.html', {'requisitions': requisitions})
+    print('REQUEST = ',request.user)
+    return render(request, 'requisition_list.html', {'requisitions': requisitions,'User':request.user,'Role':request.user.userprofile.user_type})

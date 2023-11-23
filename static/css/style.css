@@ -1,0 +1,73 @@
+/* static/css/styles.css */
+header {
+    background-color: #4CAF50; /* Green background color */
+    padding: 10px; /* Add padding for better visibility */
+}
+
+nav ul {
+    list-style-type: none; /* Remove default list styles */
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    display: inline; /* Display list items horizontally */
+    margin-right: 15px; /* Add spacing between navigation links */
+}
+
+nav a {
+    text-decoration: none; /* Remove underlines from links */
+    color: white; /* Set text color to white */
+}
+
+nav a:hover {
+    background-color: #45a049; /* Darker green background color on hover */
+}
+
+/* static/css/styles.css */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px; /* Add margin for better spacing */
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    word-wrap: break-word; /* Add word wrapping */
+}
+
+th {
+    background-color: #4CAF50; /* Green background color for header cells */
+    color: white;
+}
+
+/* Set fixed width for each column */
+th.title, td.title {
+    width: 20%;
+}
+
+th.description, td.description {
+    width: 30%;
+}
+
+th.file, td.file {
+    width: 15%;
+}
+
+th.amount, td.amount {
+    width: 10%;
+}
+
+th.amount-60, td.amount-60 {
+    width: 10%;
+}
+
+th.approved, td.approved {
+    width: 15%;
+}
+
+tr:hover {
+    background-color: #f5f5f5; /* Light gray background color on hover */
+}
