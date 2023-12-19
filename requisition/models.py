@@ -19,7 +19,7 @@ class Requisition(models.Model):
         # Call the save method of the parent class to perform the actual saving
         super().save(*args, **kwargs)
     def __str__(self):
-        return self.title,self.user.username
+        return self.title
     
     
 class UserProfile(models.Model):
@@ -27,4 +27,4 @@ class UserProfile(models.Model):
     user_type = models.CharField(max_length=20, choices=[('normal', 'Normal User'), ('supervisor', 'Supervisor'), ('administrator', 'Administrator')])
 
     def __str__(self):
-        return self.user_type, self.user.username
+        return  self.user.username

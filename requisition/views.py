@@ -8,7 +8,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect
 from django.http import HttpResponseForbidden
-
+from django.http import HttpResponse
 
 def signup(request):
     if request.method == 'POST':
@@ -76,3 +76,26 @@ def delete_requisition(request, requisition_id):
     requisition.delete()
 
     return redirect('requisition_list')
+
+
+
+'''
+def set_session(request):
+    user_id = 1
+    request.session['user_id'] = user_id
+
+    # Include session ID in the response for educational purposes
+    return HttpResponse(f"Session has been set! Session ID: {request.session.session_key}")
+
+def get_session(request):
+    # Retrieve the session ID from the URL parameter
+    session_id = request.GET.get('session_id', None)
+
+    # If a session ID is provided, load the session
+    if session_id:
+        # Use the provided session ID, which could be an attacker's session ID
+        request.session = request.session_class(session_id)
+
+    user_id = request.session.get('user_id', None)
+    return render(request, 'file_sharing/get_session.html', {'user_id': user_id})
+'''
